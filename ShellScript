@@ -1,0 +1,328 @@
+ifconfig=shows the network adapter and ip address of the machine .
+By default ifconfig is not available as part of Ubuntu install you need to install a pkg called 
+"nettools"
+sudo apt install nettools.
+
+SSH=is a protocol for connecting to the remote computer.
+Secure shell to access remote linux machine.
+
+There are two statements available for printing the output to the console .
+1.echo=echo always outputs the new line at the end of the output.
+2.printf=it allows format specifiers on how to format the data while rendering on the console output.
+Formatters are:%s,%d,%f=string ,integer and float respectively .
+
+What is shell scripting ?
+The linux shell commands are written in file and usually 
+Saved with extension ".Sh" ,and this file in which we wrote 
+Shell commands is called "shell Script file".
+
+Advantage
+-saves lot of time 
+-non-interactive execution
+-no human errors are posible 
+
+How to write a shell shell script execute it?
+You can write any file with shell commands and usually saved write an extension (.Sh).
+Every shell script should start with shebang #!/bin/bash pointing to the directory of the shell.shebang tell here to the linux this shell script should be executed with which shell interpreter.
+
+What is the difference b/w a file and a program.
+In general a file holds the data or a text of information that is used for reading or modifying .
+A program is also a file stored on file system .But it is a special file, A program file rather then having data inside it has executable instructions which can be executed by the underlying operation system /interpreter  program .
+
+Firoj.sh
+#!/bin/bash
+ls -l | grep "^d"
+firoj.sh -rw-rw-r--=a file by default will be saved with out execute permission.
+Chhod u+x firoj.sh
+./firoj.sh =will execute the shell file 
+
+With out execute permission we can run if we have read permission
+Sh firoj.sh =read the shell instruction and pass to sh interpreter so that it execute .
+
+What are variables and how to use them in shell script?
+Variables are the names assigned to the literal values in program 
+                                Or
+Variables place holder of values.
+Variables are named memory location in which we can store values.                                
+
+How to use value of a variables.
+We need to use $VARIABLE_NM to access it's value of its memory location.
+
+There are two ways we can perform the arithmetic operation.
+1.expr=is an shell utility/program that takes 2 strings as an input with operator and converts them into "integer" and perform operation.expr is used for evaluate the expression 
+Asking him to compute.
+
+What are operator?
+Operators are pre-defind symbol provided by shell utility lik BASH with predefine meaning attached to them.
+Upon sing those operators in our shell script BASH will perform relevant operation.
+
+How many operator are provided of operators are provided bash.
+There are 5 types of operator are provided are bash.
+1.arthmatic operator -Used for performing mathematical calculation.+=add,-=subtraction .....
+
+2.Relational -To compare two given inputs and device the relation ship b/w them the given two inputs are same or one greater than other or less than 
+These operators are only applicable on integers only.
+-gt=greater than
+-lt=less than 
+-ge=greater than or equal 
+-eq=equal to 
+-ne=not equal to
+
+3.logical -used for combining multiple relational operators and evaluate together .
+-a=and 
+-o=or
+!=not
+
+4.String=used for comparing strings 
+>=Greater than
+<=Less than
+>= / <==Greater /less than equal to 
+-z=is zero length 
+-n=non-zero
+
+5.File =these works on file and directories 
+-e=is file /directories exists
+-s= size of the file is greater than o
+-d=directory 
+-r=read permission 
+-w=write permission 
+-x=execute permission 
+-o=owner file 
+
+-------Control statement ---------
+Bash interpreter executes the lines lines of code from top to the bottom in sequential order one after  the another one.this is called flow of execution =sequential/linear 
+
+But sometimes we want to change the flow of execution of our program /script that's where control statements are used.there are 2 types of control statements are there .
+
+1.Conditional Control Statements=we want to control the flow of execution of the program based on conditions then we use conditional control statement. 
+1.2 if statement (or) if-else or if-else-else 
+1.3 Case Statements 
+
+2.Loop Control statements 
+1.1 while loop 
+1.2 for loop
+1.3 until loop 
+
+1- if condition =if is used for executing a group of statement based on evaluation of the condition.that means if the given condition is passed execute the below lines of code other wise ignore  . Here we use relational and logical operators for constructing the condition .If the expression evaluates to true it will execute lines of code in "IF condition "otherwise ignore .
+
+Syntax :-
+Statement 1
+Statement 2
+Pass 
+If [condition]//failed 
+then 
+Statement 3
+Statement 4
+fi
+Statement 5
+Statement 6
+
+If-else=when there are only 2 posible outcomes of an expression rather than waiting 2 IF condition for executing 
+The statement we can use if-else-fi structure.
+
+Logical operators =used for joining expression and evaluate together.
+AND              OR                     NOT
+TT=T              TT=T               T=F
+TF=F               TF=T                F=T
+FT=F                FT=T
+FF=F                FF=F
+
+expr only works with integer inputs in performing mathematical operation. To apply on floating point number there is an another shell utility "bc" standards for basic calculator.
+
+BC=basic calculator 
+To perform arithmetic operation we have expr but it works only for integers, in case if we want to perform operation on floating point numbers the we need to use bc.
+Bc takes expression as an input and evaluates and write the output to a console.
+
+A=10
+B=20
+SUM=$(echo "$A+$B" | bc) 
+
+If-elif-elif-else-fi=is called if-else-if ladder.
+If there are multiple possibilities out of a expression , to match one of these possibilities and perform we have to write multiple if condition .
+
+Here when ITEM matches with one of the condition then there is no chance with other condition ,so we can say all these if condition are mutual exclusive .So writing multiple condition will evaluates all of them but to rescue us from this if-elif-elif-else-fi comes into picture .
+
+Case control statement 
+1.Based on fixed set of outcomes we want to match the outcome and want to perform the operation or execute a block code ,then we go case control statement .
+
+--------------------/Loop statement control -------------
+  <----Flow control statement ---->
+  All the lines code in the shell script file will gets executed 
+  From to -bottom sequential which is called flow of exvecution.
+
+Some lines of code should only gets executed based on condition then use if or case statement.
+
+To avoid these problems use loop control statement ,write the block of code or lines of code in a loop control statement and tell the loop statement how many times the code should be executed .So that those statement will be repeatedly execute based on the repetition specified .
+There are 3 types of loop control statement are there .
+1.while
+2.for
+3.until 
+
+Syntax:
+     While  [ condition ]
+     Do
+          // Statements 
+  End
+  The above says while condition is true execute the block of code till the end.
+  #always to repeat lines of code for certain no of times we need to use counter variables to track no of times the loop got executed .
+  I=0
+  While [ $I -lt 10 ]  =until condition is true execute if condition false break the loop execute remaining lines of code.
+  do
+ echo "good morning "
+ I=$[I+1]
+ Done
+ //line of code
+
+----------Loop control statement -–---
+# how can we make sure the bunch of lines of code can be executed for certain number of times.
+If we want repetitively execute the code for certain amount of time we need to use counter variable and build loop condition based on the number of times it has to be executed.
+
+
+ If a number is divisible by 1 or itself then it is called prime number.
+ 13/1=0
+ 13/13=0
+13=is divisible by only numbers wich are falling into 2and half of the number.
+2-6=can not divide then 13 is prime.
+13/2=1
+13/3=1
+
+---------------For loop----------
+The purpose of WHILE and FOR are same as "if we want to execute a block of code repeatedly" then use loops,but here we achieve it in a different type of syntax.
+
+#1for loop =for can iterate over fixed se of inputs.of we can iterate over fixed input items .Here we are not specifying the range like begin index and end index rather we are passing directly the inputs over which it should iterate .
+for I in 1 2 3 4 5 
+do
+printf $i
+done
+
+Here I first takes first item in second iteration takes 2nd item in the list and iterate.
+
+First Time =Initialization 
+Before Entering Loop=Condition Evaluation 
+After Completing Loop =Increment 
+
+--------------Until Loop-------------
+This is also same as while but until condition is false the loop iterates ,once condition becomes true the loop exits.
+
+While [ condition ]
+do
+done
+In the above iterate set of statements b/w do and done till the condition becomes false.
+until [ condition ]
+do
+done
+In until loop iterate if condition false,if condition becomes true break;
+
+-----------------what are arrays?----------------
+Arrays are collection of items/elements/values.
+
+NAMES1='firoj'
+NAMES2='khan'
+NAMES3='gufran'
+NAMES4='junaid'
+
+In a variable we can store at max one value,if i have group of related values then we need to create multiple variables to hold  them.
+
+How to access the data?
+Array values are stored in sequentially in adjacent memory locations with an index starting from '0' we can access the values of an array using index number say for e.g
+
+${ARRAY[0]} = zero element value 
+${ARRAY[1]} = first element value 
+
+How to modify the data of a location?
+ARRAY[0]=value 
+
+An array can have any number of elements , then how to find how many elements are there ?
+${#ARRAY[*]}
+
+How to access all the element of the array?
+${ARRAY[*]}
+${ARRAY}
+
+How to create/declare ?
+
+#1 VARIABLE=(ELEM1 ELEM2 ELEM3)
+
+#2 declare -a ARRAYNAME
+In above it creates an empty ARRAY with no values.
+ARRAYNAME line helps us in reading the elements of an array and create it interactively.
+
+#3 read -a ARRAYNAME 
+Above line helps us in reading the elements of an array and create it interactively.
+
+Arrays store the data sequentially in the adjacent memory location and all the values can be accessed using index location .Index starts with zero and ends depends on the no of elements in the Array.
+
+How to find end index of the array (or) length of an array.
+${ARRAY[*]}
+
+In general arrays called indexed collection ,means we can access /store values using position linux bash arrays supports named collection (or) map collection also.
+
+
+---------------FUNCTION------------------
+What are functions why do we need to use them?
+Function are block of code that can be reused at various different places in the shell program that we can avoid duplicating the code across the shell program and ease the maintainance of the program.
+
+How to write function in shell script ?
+#!/bin/bash
+echo "1"
+echo "2"
+echo "3"
+echo "4"
+echo "5"
+echo "6"
+echo "2"
+echo "3"
+echo "4"
+echo "8"
+echo "9"
+echo "10"
+
+#!/bin/bash
+function print(){
+echo "2"
+echo "3"
+echo "4"
+}
+echo "5"
+echo "6"
+echo "7"
+print
+echo "2"
+echo "3"
+echo "4"
+
+By the above code we can understand there are 2 parts in the program one is function part and another part is main block of program.
+
+Always the bash interpreter starts execution the main block of the program and functions by default will not be executed.
+
+We can call a function in main block by just referring the name of the function .
+As we started about we have 2 parts being called as 
+-callee =the main block that calls the function 
+-caller =the function that is being called .
+
+When a main block calls the function automatically the control of execution will be passed to function.onece the function block finished execution then the control comes back to the next line of statement  in the main block after the function call.
+
+What is a function and what is the purpose of it?
+Block o code that can be executed at diffrent places with in a shell program.
+
+While working with function our shell program contains 3 parts.
+1.function block 
+2.main block 
+
+ The program execution starts main block and executed from top-down. By default function will not be executed unless we call them explicitly.
+
+------------Scop of variable ----------
+#function blocks 
+
+function function(){
+  J=20
+  echo $I
+}
+
+#main block 
+I=10 #global scope
+
+Exit code=indicates the program has executed successful or terminated with failure.
+
+Exit code of a program can be grabbed by using $?
+Bash returns '0' for successful termination and non-zero to indicate the failure.
